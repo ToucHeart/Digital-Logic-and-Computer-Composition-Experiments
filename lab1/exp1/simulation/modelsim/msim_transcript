@@ -1,0 +1,48 @@
+# Reading pref.tcl
+# do select_run_msim_rtl_verilog.do
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Model Technology ModelSim - Intel FPGA Edition vmap 2020.1 Lib Mapping Utility 2020.02 Feb 28 2020
+# vmap work rtl_work 
+# Copying D:/intelFPGA_lite20.1/modelsim_ase/win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# 
+# vlog -vlog01compat -work work +incdir+E:/FPGAMy_Design/select {E:/FPGAMy_Design/select/select.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 20:47:52 on Sep 19,2021
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+E:/FPGAMy_Design/select" E:/FPGAMy_Design/select/select.v 
+# -- Compiling module select
+# 
+# Top level modules:
+# 	select
+# End time: 20:47:52 on Sep 19,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vlog -vlog01compat -work work +incdir+E:/FPGAMy_Design/select/simulation/modelsim {E:/FPGAMy_Design/select/simulation/modelsim/select.vt}
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 20:47:52 on Sep 19,2021
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+E:/FPGAMy_Design/select/simulation/modelsim" E:/FPGAMy_Design/select/simulation/modelsim/select.vt 
+# -- Compiling module select_vlg_tst
+# 
+# Top level modules:
+# 	select_vlg_tst
+# End time: 20:47:52 on Sep 19,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver -L rtl_work -L work -voptargs="+acc"  select_vlg_tst
+# vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver -L rtl_work -L work -voptargs=""+acc"" select_vlg_tst 
+# Start time: 20:47:52 on Sep 19,2021
+# Loading work.select_vlg_tst
+# Loading work.select
+# 
+# add wave *
+# view structure
+# .main_pane.structure.interior.cs.body.struct
+# view signals
+# .main_pane.objects.interior.cs.body.tree
+# run -all
+# End time: 20:48:50 on Sep 19,2021, Elapsed time: 0:00:58
+# Errors: 0, Warnings: 0

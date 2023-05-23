@@ -1,0 +1,7 @@
+module select(a,b,s,f);
+	input 	a,b,s;
+	output	f;
+	
+	assign f=(s&a)|(~s&b);
+	
+endmodule 

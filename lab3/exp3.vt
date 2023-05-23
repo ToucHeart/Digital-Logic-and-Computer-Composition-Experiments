@@ -1,0 +1,59 @@
+
+
+`timescale 1 ns/ 1 ps
+module exp3_vlg_tst();
+// constants                                           
+// general purpose registers
+//reg eachvec;
+// test vector input registers
+reg [3:0] KEY;	//待测模块实际输出值
+reg [7:0] SW;	//待测模块实际输出值
+// wires                                               
+wire [6:0]  LEDR;//待测模块实际输出值
+
+task check;
+		input [3:0] result;
+		input cf,zero,of; 
+		begin
+			if(result!=LEDR)
+				begin
+					$dsiplay("Error:A=%h, B=%h, ALUctr=%h, F should be %h,but get %h", SW[3:0], SW[7:4], KEY[2:0], result[3:0], LEDR[3:0]);
+				end
+			if(cf!=LEDR[4])
+				begin
+					$display("Error:A=%h, B=%h, ALUctr=%h, cf should be %b,but get %b", SW[3:0], SW[7:4], KEY[2:0], cf, LEDR[4]);
+				end
+			if(zero!=LEDR[5])
+				begin
+					$display("Error:A=%h, B=%h, ALUctr=%h, zero should be %b,but get %b", SW[3:0], SW[7:4], KEY[2:0], zero, LEDR[5]);
+				end
+			if(of!=LEDR[6])
+				begin
+					$display("Error:A=%h, B=%h, ALUctr=%h, of should be %b,but get %b", SW[3:0], SW[7:4], KEY[2:0], of, LEDR[6]);
+				end
+		end
+endtask
+
+// assign statements (if any)                          
+exp3 i1 (
+// port map - connection between master ports and signals/registers   
+	.KEY(KEY),
+	.LEDR(LEDR),
+	.SW(SW)
+);//实例化待测模块
+
+initial                                                
+begin 
+	KEY=3'b111;SW[7:0]=8'b00010001;#10 check(4'b0001,0,0,0);//F,cf ,zero,of
+	KEY=3'b110;SW[7:0]=8'b00100001;#10 check(4'b0000,0,1,0);
+				  SW[7:0]=8'b00100011;#10 check(4'b0001,0,0,0);
+	KEY=3'b101;SW[7:0]=8'b00100001;#10 check(4'b0011,0,0,0);
+	KEY=3'b100;SW[7:0]=8'b00100001;#10 check(4'b0011,0,0,0);
+	KEY=3'b011;SW[7:0]=8'b00100001;#10 check(4'b0000,0,1,0);
+	KEY=3'b010;SW[7:0]=8'b00100001;#10 check(4'b1110,0,0,0);
+	KEY=3'b001;SW[7:0]=8'b00100001;#10 check(4'b1111,1,0,0);
+	KEY=3'b000;SW[7:0]=8'b00100001;#10 check(4'b0011,0,0,0);
+						
+end                                                    
+endmodule
+
